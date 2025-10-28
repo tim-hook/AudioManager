@@ -21,7 +21,7 @@ public class AudioManagerScript : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-        
+        initialiseAudioMembers();
 
     }
     
@@ -37,43 +37,9 @@ public class AudioManagerScript : MonoBehaviour
         initialised = true;
 
     }
-    private void Update()
-    {
-        if (!initialised)
-        {
-            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("GameScene"))
-            {
+  
 
-                initialiseAudioMembers();
-                PlaySound("BackgroundMusic");
-                SetLoopingState("BackgroundMusic", true);
-
-            }
-            if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("TestScene"))
-            {
-
-                initialiseAudioMembers();
-
-            }
-
-        }
-
-        //TESTING
-        if (FadeOutBool == true)
-        {
-
-            FadeOut("BossTheme");
-            FadeOutBool = false;
-
-        }
-        if (FadeInBool == true)
-        {
-
-            FadeIn("BossTheme", 100.0f);
-            FadeInBool = false;
-
-        }
-    }
+   
 
    public float GetVolume(string name) { return audioSources[name].volume * 100.0f; }
 
@@ -93,13 +59,7 @@ public class AudioManagerScript : MonoBehaviour
         if (audioSources.ContainsKey(name))
         {
             audioSources[name].Play();
-            if (name == "EnemyEncountered")
-            {
-
-                FadeIn("EnemyMusic", 75);
-
-            }
-
+           
         }
         else
         {
