@@ -7,7 +7,7 @@ using UnityEngine.Audio;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
-public class AudioManagerScript : MonoBehaviour
+public class AudioManager : MonoBehaviour
 {
 
     [SerializeField] Dictionary<string, AudioSource> audioSources = new Dictionary<string, AudioSource>();
@@ -16,7 +16,7 @@ public class AudioManagerScript : MonoBehaviour
     [SerializeField] bool FadeOutBool = false;
     [SerializeField] bool FadeInBool = false;
     private bool initialised = false;
-    private AudioManagerScript* instance =  nullptr;
+    private AudioManager* instance =  null;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,7 +26,16 @@ public class AudioManagerScript : MonoBehaviour
 
     }
 
-    AudioMan
+    AudioManager* GetInstance()
+    {
+        if (instance == null)
+        {
+            instance = new AudioManager();
+
+        }
+
+        return instance;
+    }
     void initialiseAudioMembers()
     {
         audioContainers = GameObject.FindGameObjectsWithTag("AudioObject");
