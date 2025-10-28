@@ -16,6 +16,7 @@ public class AudioManagerScript : MonoBehaviour
     [SerializeField] bool FadeOutBool = false;
     [SerializeField] bool FadeInBool = false;
     private bool initialised = false;
+    private AudioManagerScript* instance =  nullptr;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,7 +25,8 @@ public class AudioManagerScript : MonoBehaviour
         initialiseAudioMembers();
 
     }
-    
+
+    AudioMan
     void initialiseAudioMembers()
     {
         audioContainers = GameObject.FindGameObjectsWithTag("AudioObject");
